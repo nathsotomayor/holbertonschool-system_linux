@@ -2,6 +2,8 @@
 
 /**
  * main - Function that list the content of a directory
+ * @argc: Number of arguments
+ * @argv: String array of arguments
  * Return: If succes return 0
  **/
 int main(int argc, char **argv)
