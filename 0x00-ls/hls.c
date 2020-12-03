@@ -13,6 +13,8 @@ int main(int argc, char **argv)
 		dirp = opendir("./");
 	else if (argc == 2)
 		dirp = opendir(argv[1]);
+	else if (argc > 2)
+		exit(1);
 
 	if (dirp != NULL)
 	{
