@@ -1,15 +1,19 @@
 #include "hls.h"
 
 /**
- * main - Function based on simple ls (without args)
+ * main - Function that list the content of a directory
  * Return: If succes return 0
  **/
-int main(void)
+int main(int argc, char **argv)
 {
 	DIR *dirp;
 	struct dirent *readp;
 
-	dirp = opendir("./");
+	if (argc == 1)
+		dirp = opendir("./");
+	else if (argc == 2)
+		dirp = opendir(argv[1]);
+
 	if (dirp != NULL)
 	{
 		while ((readp = readdir(dirp)) != NULL)
@@ -17,7 +21,10 @@ int main(void)
 		printf("\n");
 	}
 	else
-		perror("Couldn't open the directory");
+	{
+		fprintf(stderr, "hls: cannot access %s: %s\n", argv[1], strerror(errno));
+		exit(2);
+	}
 
 	closedir(dirp);
 	return (0);
