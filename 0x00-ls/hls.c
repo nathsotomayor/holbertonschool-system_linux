@@ -13,7 +13,7 @@ int main(int argc, char **argv)
 	int hiddendir_first, hiddendir_second;
 
 	if (argc == 1)
-		dirp = opendir("./");
+		dirp = opendir(".");
 	else if (argc == 2)
 		dirp = opendir(argv[1]);
 	else if (argc > 2)
