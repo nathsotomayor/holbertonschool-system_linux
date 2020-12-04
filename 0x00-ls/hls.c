@@ -27,7 +27,6 @@ int main(int argc, char **argv)
 				printf("%s ", readp->d_name);
 		}
 		printf("\n");
-		closedir(dirp);
 	}
 	else
 	{
@@ -35,6 +34,7 @@ int main(int argc, char **argv)
 		/*fprintf(stderr, "hls: cannot access %s: %s\n", argv[1], strerror(errno));*/
 		return (2);
 	}
+	closedir(dirp);
 
 	return (0);
 }
