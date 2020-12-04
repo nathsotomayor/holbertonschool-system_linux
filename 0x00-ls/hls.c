@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 		{
 			hiddendir_first = _strcmp(readp->d_name, ".");
 			hiddendir_second = _strcmp(readp->d_name, "..");
-			if (hiddendir_first != 0 && hiddendir_second != 0)
+			if (readp->d_type != DT_UNKNOWN  && hiddendir_first != 0 && hiddendir_second != 0)
 				printf("%s ", readp->d_name);
 		}
 		printf("\n");
