@@ -32,7 +32,8 @@ int main(int argc, char **argv)
 	}
 	else
 	{
-		fprintf(stderr, "hls: cannot access %s: %s\n", argv[1], strerror(errno));
+		perror("hls: cannot access");
+		/*fprintf(stderr, "hls: cannot access %s: %s\n", argv[1], strerror(errno));*/
 		return (2);
 	}
 
