@@ -12,9 +12,9 @@ int main(int argc, char **argv)
 	struct dirent *readp;
 	int hiddendir_first, hiddendir_second;
 
-	if (argc == 1)
-		dirp = opendir(".");
-	else if (argc == 2)
+	dirp = opendir(".");
+
+	if (argc == 2)
 		dirp = opendir(argv[1]);
 	else if (argc > 2)
 		exit(1);
