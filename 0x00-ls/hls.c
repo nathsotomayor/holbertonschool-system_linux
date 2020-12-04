@@ -10,6 +10,7 @@ int main(int argc, char **argv)
 {
 	DIR *dirp;
 	struct dirent *readp;
+	int hiddendir_first, hiddendir_second;
 
 	if (argc == 1)
 		dirp = opendir("./");
@@ -21,7 +22,12 @@ int main(int argc, char **argv)
 	if (dirp != NULL)
 	{
 		while ((readp = readdir(dirp)) != NULL)
-			printf("%s ", readp->d_name);
+		{
+			hiddendir_first = strcmp(readp->d_name, ".");
+			hiddendir_second = strcmp(readp->d_name, "..");
+			if (hiddendir_first != 0 && hiddendir_second != 0)
+				printf("%s ", readp->d_name);
+		}
 		printf("\n");
 	}
 	else
