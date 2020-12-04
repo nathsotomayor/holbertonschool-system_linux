@@ -2,15 +2,20 @@
 
 /**
  * main - Function that list the content of a directory
+ * @argc: Number of arguments
+ * @argv: String array of arguments
  * Return: If succes return 0
  **/
-int main(void)
+int main(int argc, char **argv)
 {
 	DIR *dirp;
 	struct dirent *readp;
 	int hiddendir_first, hiddendir_second;
 
 	dirp = opendir(".");
+
+	if (argc == 2)
+		dirp = opendir(argv[1]);
 
 	if (dirp != NULL)
 	{
@@ -22,6 +27,7 @@ int main(void)
 				printf("%s ", readp->d_name);
 		}
 		printf("\n");
+		closedir(dirp);
 	}
 	else
 	{
@@ -30,6 +36,5 @@ int main(void)
 		return (2);
 	}
 
-	closedir(dirp);
 	return (0);
 }
