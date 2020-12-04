@@ -23,8 +23,8 @@ int main(int argc, char **argv)
 	{
 		while ((readp = readdir(dirp)) != NULL)
 		{
-			hiddendir_first = strcmp(readp->d_name, ".");
-			hiddendir_second = strcmp(readp->d_name, "..");
+			hiddendir_first = _strcmp(readp->d_name, ".");
+			hiddendir_second = _strcmp(readp->d_name, "..");
 			if (hiddendir_first != 0 && hiddendir_second != 0)
 				printf("%s ", readp->d_name);
 		}

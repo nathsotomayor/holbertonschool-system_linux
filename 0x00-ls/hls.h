@@ -8,4 +8,7 @@
 #include <dirent.h>
 #include <errno.h>
 
+/* Function Prototypes */
+int _strcmp(char *s1, char *s2);
+
 #endif /* HLS */
