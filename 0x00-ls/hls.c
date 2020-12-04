@@ -6,11 +6,10 @@
  * @argv: String array of arguments
  * Return: If succes return 0
  **/
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
 	DIR *dirp;
 	struct dirent *readp;
-	int hiddendir_first, hiddendir_second;
 
 	dirp = opendir(".");
 
@@ -21,9 +20,7 @@ int main(int argc, char **argv)
 	{
 		while ((readp = readdir(dirp)) != NULL)
 		{
-			hiddendir_first = _strcmp(readp->d_name, ".");
-			hiddendir_second = _strcmp(readp->d_name, "..");
-			if (readp->d_type != DT_UNKNOWN  && hiddendir_first != 0 && hiddendir_second != 0)
+			if (readp->d_type != DT_UNKNOWN  && readp->d_name[0] != *".")
 				printf("%s ", readp->d_name);
 		}
 		printf("\n");
@@ -31,7 +28,6 @@ int main(int argc, char **argv)
 	else
 	{
 		perror("hls: cannot access");
-		/*fprintf(stderr, "hls: cannot access %s: %s\n", argv[1], strerror(errno));*/
 		return (2);
 	}
 	closedir(dirp);
