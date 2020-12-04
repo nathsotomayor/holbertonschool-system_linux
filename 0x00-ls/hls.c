@@ -17,7 +17,7 @@ int main(int argc, char **argv)
 	if (argc == 2)
 		dirp = opendir(argv[1]);
 	else if (argc > 2)
-		exit(1);
+		return (1);
 
 	if (dirp != NULL)
 	{
@@ -33,7 +33,7 @@ int main(int argc, char **argv)
 	else
 	{
 		fprintf(stderr, "hls: cannot access %s: %s\n", argv[1], strerror(errno));
-		exit(2);
+		return (2);
 	}
 
 	closedir(dirp);
